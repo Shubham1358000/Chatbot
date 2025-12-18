@@ -1,0 +1,343 @@
+:root {
+    --bg: #f6f8fb;
+    --card: #fff;
+    --accent: #2563eb;
+    --muted: #6b7280;
+    --user: #eef2ff;
+    --bot: #f8fafc;
+    --radius: 12px;
+    --gap: 12px;
+}
+
+* {
+    box-sizing: border-box
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    font-family: Inter, system-ui, Segoe UI, Roboto, Arial;
+    background: var(--bg);
+    color: #0f172a
+}
+
+.chat-app {
+    max-width: 980px;
+    height: 614.59px;
+    margin: 36px auto;
+    padding: 18px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), var(--card));
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(16, 24, 40, 0.06);
+    display: flex;
+    flex-direction: column;
+    min-height: 560px
+}
+
+.chat-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.04)
+}
+
+.brand {
+    display: flex;
+    gap: 12px;
+    align-items: center
+}
+
+.logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #eef2ff, #e0f0ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px
+}
+
+.brand h1 {
+    margin: 0;
+    font-size: 18px
+}
+
+.brand .sub {
+    margin: 0;
+    font-size: 13px;
+    color: var(--muted)
+}
+
+.actions .clearBtn {
+    background: transparent;
+    border: none;
+    color: var(--muted);
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer
+}
+
+.chat-window {
+    flex: 1;
+    padding: 14px;
+   overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+
+
+.messages {
+    height: 100%;
+    overflow: auto;
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px
+}
+
+.message {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px
+}
+
+.message.bot {
+    justify-content: flex-start
+}
+
+.message.user {
+    justify-content: flex-end;
+   
+}
+
+.bubble {
+    max-width: 78%;
+    padding: 12px 14px;
+    border-radius: 12px;
+    line-height: 1.35;
+    box-shadow: 0 6px 18px rgba(12, 18, 32, 0.04)
+}
+
+.message.bot .bubble {
+    background: var(--bot);
+    color: #0b1220;
+    border-top-left-radius: 6px;
+}
+
+.message.user .bubble {
+    background: var(--user);
+    color: #04122a;
+   
+}
+
+.message.typing .bubble {
+    background: transparent;
+    box-shadow: none
+}
+
+.message .dots {
+    display: inline-flex;
+    gap: 6px
+}
+
+.dots span {
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #cbd5e1;
+    opacity: 0.85;
+    animation: jump 1s infinite
+}
+
+.dots span:nth-child(2) {
+    animation-delay: .12s
+}
+
+.dots span:nth-child(3) {
+    animation-delay: .24s
+}
+
+@keyframes jump {
+    0% {
+        transform: translateY(0);
+        opacity: .6
+    }
+
+    50% {
+        transform: translateY(-6px);
+        opacity: 1
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: .6
+    }
+}
+
+.composer {
+    padding: 12px;
+    border-top: 1px solid rgba(15, 23, 42, 0.04);
+    display: flex;
+    flex-direction: column;
+    gap: 8px
+}
+
+.controls {
+    display: flex;
+    gap: 8px
+}
+
+.controls input[type="text"] {
+    flex: 1;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    outline: none;
+    font-size: 15px
+}
+
+.controls input:focus {
+    box-shadow: 0 6px 18px rgba(37, 99, 235, 0.08);
+    border-color: rgba(37, 99, 235, 0.28);
+}
+
+.sendBtn {
+    background: var(--accent);
+    border: none;
+    color: #fff;
+    padding: 10px 14px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.sendBtn.disabled{
+    display: none;
+}
+
+.quick {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+
+}
+
+.chip {
+    background: transparent;
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    padding: 8px 12px;
+    border-radius: 999px;
+    cursor: pointer;
+    color: var(--muted);
+}
+
+.note {
+    font-size: 13px;
+    color: var(--muted);
+    padding: 10px 12px;
+}
+
+/* responsive / mobile-first improvements */
+@media (max-width:720px) {
+    :root {
+        --gap: 10px
+    }
+
+    /* make the chat app take almost full height and allow composer to be sticky */
+    .chat-app {
+        margin: 8px;
+        padding: 14px 12px 96px;
+        /* leave space for the fixed composer */
+        border-radius: 12px;
+        min-height: calc(100vh - 16px);
+    }
+
+    .logo {
+        width: 44px;
+        height: 44px;
+    }
+
+    .brand h1 {
+        font-size: 16px;
+    }
+
+    .brand .sub {
+        font-size: 12px
+    }
+
+    .messages {
+        padding: 10px 6px 140px;
+        gap: 10px
+    }
+
+    .bubble {
+        max-width: 88%;
+        font-size: 15px;
+        padding: 12px 14px
+    }
+
+    /* composer becomes fixed at bottom for easier typing */
+    .composer {
+        position: fixed;
+        left: 8px;
+        right: 8px;
+        bottom: calc(72px + env(safe-area-inset-bottom));
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.99));
+        padding: 12px;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(12, 18, 40, 0.08);
+        z-index: 40;
+        border: 1px solid rgba(15, 23, 42, 0.04);
+    }
+
+    .controls {
+        display: flex;
+        gap: 8px
+    }
+
+    .controls input[type="text"] {
+        padding: 14px;
+        border-radius: 10px
+    }
+
+    .sendBtn {
+        padding: 12px 14px;
+        border-radius: 10px
+    }
+
+    /* quick chips should be touch-friendly */
+    .quick {
+        padding-top: 6px
+    }
+
+    .chip {
+        padding: 10px 14px;
+        font-size: 14px
+    }
+
+    /* ensure messages aren't hidden behind composer */
+    .chat-window {
+        margin-bottom: 95px;
+    }
+    
+    .note{
+        position:fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+        bottom: 16px;
+        font-size: 10px;
+      
+    }
+}
+
+/* reduce motion */
+@media (prefers-reduced-motion: reduce) {
+    .dots span {
+        animation: none
+    }
+}

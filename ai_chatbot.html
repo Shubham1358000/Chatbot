@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI Customer Support Chatbot</title>
+  <link rel="stylesheet" href="ai_chatbot.css">
+</head>
+<body>
+  <main class="chat-app" role="application" aria-label="AI Customer Support Chat">
+    <header class="chat-header">
+      <div class="brand">
+        <div class="logo" aria-hidden>🤖</div>
+        <div>
+          <h1>Chat Bot</h1>
+          <p class="sub">We're here to help — ask anything</p>
+        </div>
+      </div>
+      <div class="actions">
+        <button id="clearBtn" class="clearBtn">Clear</button>
+      </div>
+    </header>
+
+    <section id="chatWindow" class="chat-window" aria-live="polite">
+      <div class="messages" id="messages" role="list"></div>
+    </section>
+
+    <form id="composer" class="composer" autocomplete="off">
+      <div class="controls">
+        <input id="user-input" name="message" type="text" placeholder="Type your question or issue..." aria-label="Type your message" />
+        <button id="sendBtn" type="submit" class="sendBtn" >Send</button>
+      </div>
+      <div class="quick">
+         <button type="button" class="chip">Hello</button>
+        <button type="button" class="chip">answer</button>
+        <button type="button" class="chip">what new</button>
+      </div>
+    </form>
+
+    <footer class="note">
+      <strong>⚠️ Pay Attention:</strong> Upper toggal button not working right know but in a futur it will work<strong style="background:#b5b2b2;margin-left: 5px;padding:5px 6px;border-radius:4px">😿 please wait paysensely</strong>
+    </footer>
+  </main>
+
+    <script src="ai_chatbot.js" defer></script>
+</body>
+</html>
